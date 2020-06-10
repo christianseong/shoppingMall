@@ -1,13 +1,19 @@
 package com.hipstercompany.hipster.util;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.BasicDBObjectBuilder;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import com.mongodb.util.JSON;
 
 public class MongoDBDatasource {
 		public static void main(String [] args) {
@@ -26,6 +32,7 @@ public class MongoDBDatasource {
 				dbnum++;
 			}
 			System.out.println();
+			
 			//Connect Database and show Collection List 예시) shoppingmall_db 
 			DB database = mongoClient.getDB("shoppingmall_db");
 			Set<String> collections = database.getCollectionNames();
@@ -36,13 +43,61 @@ public class MongoDBDatasource {
 				colNum++;
 			}
 			
-			
 			DBCollection dbCollection = (DBCollection) database.getCollection("member");
 			
 			DBCursor cursor = dbCollection.find();
 			while(cursor.hasNext()) {
 				System.out.println(cursor.next());
 			}
+			
+			
+			//MongoDB insert document 활용예시
+			//1번 BasicDBObject를 활용한 insert
+			BasicDBObject document = new BasicDBObject();
+			document.put("mem_id", "test01");
+			
+			//1번 Insert Data
+			dbCollection.insert(document);
+			
+			//2번 BasicDBObjectBuilder를 활용한 insert 특징 2개 이상 넣을 수 있다.
+			BasicDBObjectBuilder documentBuilder = BasicDBObjectBuilder.start().add("mem_id", "test02").add("mem_name", "test02");
+			BasicDBObjectBuilder documentBuilderDetail = BasicDBObjectBuilder.start().add("mem_sex", "men").add("mem_favorite", "movie").add("hobby", "movie");
+			documentBuilder.add("mem_personality", documentBuilderDetail.get());
+			
+			//2번 Insert Data
+			dbCollection.insert(documentBuilder.get());
+			
+			//3번 BasicDBObject 와 Map의 혼용
+			Map<String , Object> documentMap = new HashMap<String, Object>();
+			documentMap.put("one","data03");
+			documentMap.put("two","Map");
+			
+			Map<String , Object> documentMapDetail = new HashMap<String, Object>();
+			documentMapDetail.put("three-one",97);
+			documentMapDetail.put("three-two","Map");
+			documentMapDetail.put("three-three",true);
+			
+			documentMap.put("three", documentMapDetail);
+			
+			//3번 Insert Data
+			dbCollection.insert(new BasicDBObject(documentMap));
+			
+			//4번 json을 이용한 insert
+			String json = "{'one':'data04','two':'json','three':{'three-one':96,'three-two':'json'}}";
+			DBObject dbObject =(DBObject)JSON.parse(json);
+			
+			//4번 Insert Data
+			dbCollection.insert(dbObject);
+			
+			//insert 확인 코드
+			DBCursor cursorBuilder = dbCollection.find();
+			while(cursorBuilder.hasNext()) {
+				System.out.println(cursorBuilder.next());
+			}
+			
+			
+			
+			
 		}
 	
 }
