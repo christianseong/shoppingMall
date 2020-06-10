@@ -5,9 +5,9 @@
 	<title>Home</title>
 </head>
 <body>
-<h1>Main</h1>
-<a href="/hipster/resources/html/memJoin.html">JOIN</a>
-<a href="/hipster/resources/html/login.html">LOGIN</a>
-
+<h1>memLoginOk</h1>
+ID : ${memId} <br/>
+PW : ${memPw} <br/>
+<a href="/hipster/resources/html/login.html"> GO Main</a>
 </body>
 </html>
