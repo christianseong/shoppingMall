@@ -1,1 +1,1 @@
-new project tester
+new project
