@@ -17,11 +17,21 @@ import com.mongodb.util.JSON;
 
 public class MongoDBDatasource {
 		public static void main(String [] args) {
+		
+			mongodb_insert(getCollection());
 			
+		}
+		public static DB getDatabase() {
 			//Connect to MongoDB
 			MongoClientURI uri = new MongoClientURI("mongodb+srv://christian:christian@cluster0-5cnsr.mongodb.net/shoppingmall_db?retryWrites=true&w=majority");
 			MongoClient mongoClient = new MongoClient(uri);
 			
+			//Connect Database and show Collection List 예시) shoppingmall_db 
+			DB database = mongoClient.getDB("shoppingmall_db");
+			
+			return database;
+			
+			/*
 			//View Database List
 			List<String> databases = mongoClient.getDatabaseNames();
 			
@@ -32,25 +42,21 @@ public class MongoDBDatasource {
 				dbnum++;
 			}
 			System.out.println();
-			
-			//Connect Database and show Collection List 예시) shoppingmall_db 
-			DB database = mongoClient.getDB("shoppingmall_db");
-			Set<String> collections = database.getCollectionNames();
+					Set<String> collections = database.getCollectionNames();
 			System.out.println("Databse: "+"shoppingmall_db");
 			int colNum=1;
 			for(String colName: collections) {
 				System.out.println("Collection Number "+colNum+" is "+colName);
 				colNum++;
 			}
-			
-			DBCollection dbCollection = (DBCollection) database.getCollection("member");
-			
-			DBCursor cursor = dbCollection.find();
-			while(cursor.hasNext()) {
-				System.out.println(cursor.next());
-			}
-			
-			
+			*/
+		}
+		
+		public static DBCollection getCollection() {
+			return getDatabase().getCollection("member");
+		}
+	
+		public static void mongodb_insert(DBCollection dbCollection) {
 			//MongoDB insert document 활용예시
 			//1번 BasicDBObject를 활용한 insert
 			BasicDBObject document = new BasicDBObject();
@@ -93,11 +99,7 @@ public class MongoDBDatasource {
 			DBCursor cursorBuilder = dbCollection.find();
 			while(cursorBuilder.hasNext()) {
 				System.out.println(cursorBuilder.next());
-			}
-			
-			
-			
-			
+			}	
 		}
 	
 }
