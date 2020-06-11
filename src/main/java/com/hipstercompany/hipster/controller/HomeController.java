@@ -38,7 +38,7 @@ public class HomeController {
 		System.out.println(userInfo.get("email"));
 		System.out.println(userInfo.get("thumbnail_image"));
 		System.out.println(userInfo.get("profile_image"));
-		
+		//¹Ù²ñ
 		if(userInfo.get("email")!=null) {
 			model.addAttribute("userId",userInfo.get("email"));
 			model.addAttribute("thumbnail_image",userInfo.get("thumbnail_image"));
