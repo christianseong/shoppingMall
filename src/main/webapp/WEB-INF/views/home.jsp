@@ -78,9 +78,11 @@
                                         </ul>
                                     </nav>
                                 </div>
+                                
                                 <div class="header-right-btn f-right d-none d-lg-block ml-30">
                                     <a href="/hipster/resources/html/memJoin.html" class="btn header-btn">회원가입</a>
                                 </div>
+                                
                             </div>
                         </div>   
                         <!-- Mobile Menu -->
