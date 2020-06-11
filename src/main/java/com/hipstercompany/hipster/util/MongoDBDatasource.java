@@ -1,9 +1,9 @@
 package com.hipstercompany.hipster.util;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.BasicDBObjectBuilder;
@@ -13,7 +13,6 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
-import com.mongodb.operation.*;
 import com.mongodb.util.JSON;
 
 public class MongoDBDatasource {
@@ -21,6 +20,7 @@ public class MongoDBDatasource {
 
 		// mongodb_insert(getCollection());
 		// mongodb_update(getCollection());
+		// mongodb_find(getCollection());
 	}
 
 	// DB 연결
@@ -125,4 +125,96 @@ public class MongoDBDatasource {
 
 		dbCollection.updateMulti(searchQuery2, updateQuery2);
 	}
+
+	// Mongodb delete
+	public static void mongodb_delete(DBCollection dbCollection) {
+
+	}
+
+	// Mondodb find
+	public static void mongodb_find(DBCollection dbCollection) {
+		// 1.전체 도큐먼크 찾기
+		System.out.println("1. Find all matched documents");
+		DBCursor cursor = dbCollection.find();
+		while (cursor.hasNext()) {
+			System.out.println(cursor.next());
+		}
+		// 2.도큐먼트 첫 번째 값
+		System.out.println("\n1-2. Find first matched document");
+		DBObject dbObject = dbCollection.findOne();
+		System.out.println(dbObject);
+
+		// 3.필드 하나의 값 모두 출력 (collection find 메소드에 2개의 파라미터를 넣으면 됨)
+		System.out.println("\n1-3. Get 'name' field only");
+		BasicDBObject allQuery = new BasicDBObject();
+		BasicDBObject fields = new BasicDBObject();
+		fields.put("mem_id", "test01"); // 두 번째 파라미터는 어떤 값이 와도 상관없는거 같음
+		DBCursor cursor2 = dbCollection.find(allQuery, fields);
+		while (cursor2.hasNext()) {
+			System.out.println(cursor2.next());
+		}
+		// 4.필드 조건 출력 (collection find 메소드에 1개의 파라미터를 넣으면 됨)
+		System.out.println("\n2. Find where number = 5");
+		BasicDBObject whereQuery = new BasicDBObject();
+		whereQuery.put("mem_id", "test01");
+		DBCursor cursor3 = dbCollection.find(whereQuery);
+		while (cursor3.hasNext()) {
+			System.out.println(cursor3.next());
+		}
+
+		// 5.조건 여러개 주어서 맞는 값 찾음
+		System.out.println("\n2-2. Find where mem_id in test01 data03");
+		BasicDBObject inQuery = new BasicDBObject();
+		List<String> list = new ArrayList<String>();
+		list.add("data03");
+		list.add("test01");
+		// $in을 써줌으로 데이터에 맞는 값을 찾음
+		inQuery.put("mem_id", new BasicDBObject("$in", list));
+		DBCursor cursor4 = dbCollection.find(inQuery);
+		while (cursor4.hasNext()) {
+			System.out.println(cursor4.next());
+		}
+
+		// 6. 조건 크고 작을때 $gt $lt
+		System.out.println("\n2-3. Find where 5 > number > 2");
+		BasicDBObject gtQuery = new BasicDBObject();
+		gtQuery.put("number", new BasicDBObject("$gt", 2).append("$lt", 5));
+		DBCursor cursor5 = dbCollection.find(gtQuery);
+		while (cursor5.hasNext()) {
+			System.out.println(cursor5.next());
+		}
+
+		// 7. 조건 무엇이 아닐때 $ne
+		System.out.println("\n2-4. Find where number != 4");
+		BasicDBObject neQuery = new BasicDBObject();
+		neQuery.put("number", new BasicDBObject("$ne", 4));
+		DBCursor cursor6 = dbCollection.find(neQuery);
+		while (cursor6.hasNext()) {
+			System.out.println(cursor6.next());
+		}
+
+		// 8. 두가지 조건을 주어야 할때 ArrayList로 값을 넣어서
+		System.out.println("\n3. Find when number = 2 and name = 'mkyong-2' example");
+		BasicDBObject andQuery = new BasicDBObject();
+		List<BasicDBObject> obj = new ArrayList<BasicDBObject>();
+		obj.add(new BasicDBObject("number", 2));
+		obj.add(new BasicDBObject("name", "mkyong-2"));
+		andQuery.put("$and", obj);
+		System.out.println(andQuery.toString());
+		DBCursor cursor7 = dbCollection.find(andQuery);
+		while (cursor7.hasNext()) {
+			System.out.println(cursor7.next());
+		}
+
+		// 9. 정규표현식으로 찾기 $regex $options(옵션을 걸어줄 수 있음 i는 소문자 대문자 상관없이)
+		System.out.println("\n4. Find where name = 'Mky.*-[1-3]', case sensitive example");
+		BasicDBObject regexQuery = new BasicDBObject();
+		regexQuery.put("name", new BasicDBObject("$regex", "Mky.*-[1-3]").append("$options", "i"));
+		System.out.println(regexQuery.toString());
+		DBCursor cursor8 = dbCollection.find(regexQuery);
+		while (cursor8.hasNext()) {
+			System.out.println(cursor8.next());
+		}
+	}
+
 }
