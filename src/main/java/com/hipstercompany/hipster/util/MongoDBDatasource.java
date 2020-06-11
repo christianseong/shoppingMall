@@ -13,6 +13,7 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import com.mongodb.client.MongoCollection;
 import com.mongodb.util.JSON;
 
 public class MongoDBDatasource {
@@ -21,6 +22,7 @@ public class MongoDBDatasource {
 		// mongodb_insert(getCollection());
 		// mongodb_update(getCollection());
 		// mongodb_find(getCollection());
+		mongodb_delete(getCollection());
 	}
 
 	// DB ¿¬°á
@@ -128,7 +130,9 @@ public class MongoDBDatasource {
 
 	// Mongodb delete
 	public static void mongodb_delete(DBCollection dbCollection) {
-
+		BasicDBObject deletequery =new BasicDBObject();
+		deletequery.put("mem_id","test01");
+		dbCollection.remove(deletequery); 
 	}
 
 	// Mondodb find
