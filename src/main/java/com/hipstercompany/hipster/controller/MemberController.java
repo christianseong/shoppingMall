@@ -31,7 +31,7 @@ public class MemberController {
 		model.addAttribute("memMail",memMail);
 		model.addAttribute("memPhone",memPhone1);
 		
-		return "memJoinOK";
+		return "memJoin";
 		
 	}
 	

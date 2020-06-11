@@ -1,5 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -74,7 +79,7 @@
                                     </nav>
                                 </div>
                                 <div class="header-right-btn f-right d-none d-lg-block ml-30">
-                                    <a href="/hipster/resources/html/from.html" class="btn header-btn">became a member</a>
+                                    <a href="/hipster/resources/html/memJoin.html" class="btn header-btn">회원가입</a>
                                 </div>
                             </div>
                         </div>   

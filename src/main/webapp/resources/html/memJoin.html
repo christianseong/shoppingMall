@@ -1,18 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id"
+	content="462803068492-adh7u83nm5c0e0ehdv6v4uk3rggs2tnm.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 </head>
 <body>
-	<h1>Member Join</h1>
-	<form action="hipster/memJoin" method="post">
-		ID : <input type="text" name="memId"><br>
-		PW : <input type="password" name="memPw"><br>
-		MAIL : <input type="text" name="memMail"><br>
-		PHONE : <input type="text" name="memPhone1" size="5"><br>
-		<input type="submit" value="Join"><br>
-	</form>
-	<a href="/hipster/resources/html/login.html">LOGIN</a>
+	
+	<h1>이곳은 회원가입 페이지 입니다</h1>
+	<a
+		href="https://kauth.kakao.com/oauth/authorize?client_id=2b2c7e111b27cbb5f391a0825ae806af&redirect_uri=https://lit-basin-13679.herokuapp.com/login&response_type=code">
+		<img src="/hipster/resources/assets/img/logo/kakaologin.png">
+	</a>
+
+	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+	<script>
+      function onSignIn(googleUser) {
+    	//dV0pphR5mIM-l5hJExe0seB_
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+      }
+    </script>
+    
+    <div id="naverIdLogin"></div>
+<!-- //네이버아이디로로그인 버튼 노출 영역 -->
+
+<!-- 네이버아디디로로그인 초기화 Script -->
+<script type="text/javascript">
+	var naverLogin = new naver.LoginWithNaverId(
+		{
+			clientId: "V8QvO3B5YGZb72FnjCCa",
+			callbackUrl: "http://localhost:8080",
+			isPopup: false, /* 팝업을 통한 연동처리 여부 */
+			loginButton: {color: "green", type: 3, height: 60} /* 로그인 버튼의 타입을 지정 */
+		}
+	);
+	
+	/* 설정정보를 초기화하고 연동을 준비 */
+	naverLogin.init();
+	
+</script>
 </body>
 </html>
