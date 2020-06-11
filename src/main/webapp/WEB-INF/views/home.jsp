@@ -33,7 +33,8 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="/hipster/resources/assets/img/logo/loder.png" alt="">
+                    <img src="/hipster/resources/assets/img/logo/hipster.png" alt="">
+               
                 </div>
             </div>
         </div>
@@ -48,7 +49,7 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2 col-md-1">
                             <div class="logo">
-                                <a href="index.html"><img src="/hipster/resources/assets/img/logo/logo.png" alt=""></a>
+                                <a href="?page=home"><img src="/hipster/resources/assets/img/logo/LogoMakr_9EJ9V9.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10 col-md-10">
@@ -57,7 +58,7 @@
                                 <div class="main-menu f-right d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li class="active"><a href="index.html">Home</a></li>
+                                            <li class="active"><a href="?page=home">Home</a></li>
                                             <li><a href="/hipster/resources/html/about.html">About</a></li>
                                             <li><a href="/hipster/resources/html/services.html">Services</a></li>
                                             <li><a href="/hipster/resources/html/portfolio.html">Portfolio</a></li>
@@ -431,7 +432,7 @@
                                 <div class="blog-cap">
                                     <p>|   Physics</p>
                                     <h3><a href="blog_details.html">Footprints in Time is perfect House in Kurashiki</a></h3>
-                                    <a href="blog_details.html" class="more-btn">became a member »</a>
+                                    <a href="blog_details.html" class="more-btn">became a member Â»</a>
                                 </div>
                             </div>
                         </div>
@@ -450,7 +451,7 @@
                                 <div class="blog-cap">
                                     <p>|   Physics</p>
                                     <h3><a href="blog_details.html">Footprints in Time is perfect House in Kurashiki</a></h3>
-                                    <a href="blog_details.html" class="more-btn">became a member »</a>
+                                    <a href="blog_details.html" class="more-btn">became a member Â»</a>
                                 </div>
                             </div>
                         </div>
