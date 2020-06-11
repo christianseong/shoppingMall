@@ -1,5 +1,7 @@
 package com.hipstercompany.hipster.controller;
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -26,9 +28,22 @@ public class HomeController {
 		}
 	
 	@RequestMapping(value="/login",method=RequestMethod.GET)
-	public String login(@RequestParam("code")String code, Model model) {
+	public String login(@RequestParam("code")String code, Model model) throws IOException {
 		String access_Token = kakao.getAccessToken(code);
-        System.out.println("controller access_token : " + access_Token);
+		
+        //System.out.println("controller access_token : " + access_Token);
+        //model.addAttribute("access_token",access_Token);
+		
+		HashMap<String,Object> userInfo = kakao.getUserInfo(access_Token);
+		System.out.println(userInfo.get("email"));
+		System.out.println(userInfo.get("thumbnail_image"));
+		System.out.println(userInfo.get("profile_image"));
+		
+		if(userInfo.get("email")!=null) {
+			model.addAttribute("userId",userInfo.get("email"));
+			model.addAttribute("thumbnail_image",userInfo.get("thumbnail_image"));
+			model.addAttribute("profile_image",userInfo.get("profile_image"));
+		}
 		return "login";
 	}
 }

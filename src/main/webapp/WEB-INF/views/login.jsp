@@ -12,6 +12,8 @@
 	이것은 로그인 입니다
 </h1>
 
-<P>  당신의 코드는 ${code} </P>
+<P>  당신의 이메일은 ${userId} </P>
+<img src="${profile_image} "/>
+<img src="${thumbnail_image} "/>
 </body>
 </html>
