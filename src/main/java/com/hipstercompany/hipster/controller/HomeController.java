@@ -7,6 +7,7 @@ import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import com.hipstercompany.hipster.service.KakaoAPIService;
 @Controller
 public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	
 	
 	@Autowired
     private KakaoAPIService kakao;
@@ -43,7 +45,15 @@ public class HomeController {
 			model.addAttribute("userId",userInfo.get("email"));
 			model.addAttribute("thumbnail_image",userInfo.get("thumbnail_image"));
 			model.addAttribute("profile_image",userInfo.get("profile_image"));
+			model.addAttribute("access_token",access_Token);
 		}
 		return "login";
+	}
+	
+	@RequestMapping(value="/logout",method=RequestMethod.GET)
+	public String logout(@RequestParam("code")String code, Model model) throws IOException {
+		String access_Token = kakao.getAccessToken(code);
+		kakao.disconnectKakao(access_Token);	
+		return "logout";
 	}
 }

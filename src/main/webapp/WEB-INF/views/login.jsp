@@ -15,5 +15,9 @@
 <P>  당신의 이메일은 ${userId} </P>
 <img src="${profile_image} "/>
 <img src="${thumbnail_image} "/>
+
+<p>${access_token}</p>
+
+
 </body>
 </html>

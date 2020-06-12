@@ -9,15 +9,21 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.hipstercompany.hipster.dao.UserDao;
 
 @Service
 public class KakaoAPIService{
+
+	
+	@Autowired UserDao userdao;
 	public String getAccessToken (String authorize_code) throws IOException{
+		
         String access_Token = "";
         String refresh_Token = "";
         String reqURL = "https://kauth.kakao.com/oauth/token";
@@ -111,10 +117,15 @@ public class KakaoAPIService{
 	        String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 	        String email = kakao_account.getAsJsonObject().get("email").getAsString();
 	        
+	        System.out.println("test" + email);
+	        
+	        userdao.addUser(email);
+	        
 	        userInfo.put("nickname", nickname);
 	        userInfo.put("email", email);
 	        userInfo.put("profile_image",profile_image);
 	        userInfo.put("thumbnail_image",thumbnail_image);
+	        
 	        
 	    } catch (IOException e) {
 	        // TODO Auto-generated catch block
@@ -122,5 +133,35 @@ public class KakaoAPIService{
 	    }
 	    
 	    return userInfo;
+	}
+	
+	
+	
+	public void disconnectKakao(String access_Token) {
+		String reqURL = "https://kapi.kakao.com//v1/user/unlink";
+		try {
+	        URL url = new URL(reqURL);
+	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+	        conn.setRequestMethod("POST");
+	        
+	        //    요청에 필요한 Header에 포함될 내용
+	        conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+	        
+	        int responseCode = conn.getResponseCode();
+	        System.out.println("responseCode : " + responseCode);
+	        
+	        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	        
+	        String line = "";
+	        String result = "";
+	        
+	        while ((line = br.readLine()) != null) {
+	            result += line;
+	        }
+	        System.out.println("response body : " + result);
+	} catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    	}
 	}
 }

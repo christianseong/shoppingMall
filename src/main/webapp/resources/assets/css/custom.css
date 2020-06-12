@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+.modal-backdrop{
+	z-index : 1 !important;
+}
+
+.modal-content{
+	font-weight:bold;
+	font-size:40px;
+	align-items:center;
+	overflow : hidden;
+}
+
+.modal-header{
+	margin-left:60px;
+}
+
+.sns-login-btn-wrapper{
+	margin: 13px 0 25px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sns-login-btn-wrapper .sns-btn-naver{
+	background-color: #20c702;
+	width: 53px;
+    height: 53px;
+    border-radius: 50%;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.sns-login-btn-wrapper .sns-btn-kakao{
+	background-color: #f9e000;
+	width: 53px;
+    height: 53px;
+    border-radius: 50%;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sns-login-btn-wrapper .sns-btn-google{
+	background-color: #f8f9fd;
+	width: 53px;
+    height: 53px;
+    border-radius: 50%;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
