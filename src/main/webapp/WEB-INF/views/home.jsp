@@ -4,7 +4,6 @@
 	pageEncoding="UTF-8"%>
 
 
-
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -96,6 +95,8 @@
 										</ul>
 									</nav>
 								</div>
+<c:choose>
+<c:when test="${empty id}">
 
 								<!-- Button login trigger modal -->
 								<button type="button" class="btn"
@@ -151,9 +152,13 @@
 									<a href="/hipster/resources/html/memJoin.html"
 										class="btn header-btn">회원가입</a>
 								</div>
+</c:when>
+<c:otherwise>
+								<!-- Button login trigger modal -->
+								<d>${id}님 환영합니다.</d>
+</c:otherwise>
 
-
-
+</c:choose>
 							</div>
 						</div>
 						<!-- Mobile Menu -->

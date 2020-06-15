@@ -142,19 +142,18 @@ public class KakaoAPIService{
 	}
 	
 
-	public HashMap<String,Object> addUser(String access_Token) {
+	public HashMap<String, Object> addUser(String access_Token) {
 		HashMap<String,Object> userInfo = getUserInfo(access_Token);
-		
-		String email = (String)userInfo.get("email");
 		
 		int i =userdao.checkUserId((String) userInfo.get("email"));
 		
+		//login
 		if(i>0) {
-			return null;
+			return userInfo;
 		}
 		
+		//register
 		userdao.addUser((String) userInfo.get("email"));
-		
 		return userInfo; 
 	}
 	
