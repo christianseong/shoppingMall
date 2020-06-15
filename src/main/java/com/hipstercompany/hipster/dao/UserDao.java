@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import com.hipstercompany.hipster.util.MongoDBDatasource;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
 
 
 
@@ -38,7 +39,21 @@ public class UserDao {
 		
 	}
 	
-	public void getAllUserEmailCheck(String mem_email) {
+	public void getObjectID(String mem_email) {
 		
+	}
+	
+	
+	public int checkUserId(String mem_email) {
+		BasicDBObject whereQuery = new BasicDBObject();
+		whereQuery.put("mem_id", mem_email);
+		DBCollection collection = mongo.getCollection();
+		
+		DBCursor cursor3 = collection.find(whereQuery);
+		
+		int count =cursor3.count();
+		
+		return count;
+
 	}
 }

@@ -24,6 +24,8 @@ public class KakaoAPIService{
 	@Autowired UserDao userdao;
 	public String getAccessToken (String authorize_code) throws IOException{
 		
+		System.out.println("getAccessToken 호출");
+		
         String access_Token = "";
         String refresh_Token = "";
         String reqURL = "https://kauth.kakao.com/oauth/token";
@@ -50,7 +52,7 @@ public class KakaoAPIService{
             
             //    결과 코드가 200이라면 성공
             int responseCode = conn.getResponseCode();
-            System.out.println("responseCode : " + responseCode);
+            //System.out.println("responseCode : " + responseCode);
  
             //    요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -60,7 +62,7 @@ public class KakaoAPIService{
             while ((line = br.readLine()) != null) {
                 result += line;
             }
-            System.out.println("response body : " + result);
+            //System.out.println("response body : " + result);
             
             //    Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
             JsonParser parser = new JsonParser();
@@ -69,8 +71,8 @@ public class KakaoAPIService{
             access_Token = element.getAsJsonObject().get("access_token").getAsString();
             refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
             
-            System.out.println("access_token : " + access_Token);
-            System.out.println("refresh_token : " + refresh_Token);
+            //System.out.println("access_token : " + access_Token);
+            //System.out.println("refresh_token : " + refresh_Token);
             
             br.close();
             bw.close();
@@ -83,6 +85,7 @@ public class KakaoAPIService{
     }
 	
 	public HashMap<String, Object> getUserInfo(String access_Token){
+		System.out.println("getUserInfo 호출");
 		HashMap<String, Object> userInfo = new HashMap<String,Object>();
 	    String reqURL = "https://kapi.kakao.com/v2/user/me";
 	    try {
@@ -94,7 +97,7 @@ public class KakaoAPIService{
 	        conn.setRequestProperty("Authorization", "Bearer " + access_Token);
 	        
 	        int responseCode = conn.getResponseCode();
-	        System.out.println("responseCode : " + responseCode);
+	        System.out.println("이것은 getUserInfo responseCode : " + responseCode);
 	        
 	        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 	        
@@ -104,7 +107,7 @@ public class KakaoAPIService{
 	        while ((line = br.readLine()) != null) {
 	            result += line;
 	        }
-	        System.out.println("response body : " + result);
+	        System.out.println("이것은 getUserInfo response body : " + result);
 	        
 	        JsonParser parser = new JsonParser();
 	        JsonElement element = parser.parse(result);
@@ -117,16 +120,19 @@ public class KakaoAPIService{
 	        String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 	        String email = kakao_account.getAsJsonObject().get("email").getAsString();
 	        
-	        System.out.println("test" + email);
+	        System.out.println("이것은 getUserInfo test" + email);
 	        
-	        userdao.addUser(email);
+	        //userdao.addUser(email);
+	        //userdao.checkUserId(email);
 	        
 	        userInfo.put("nickname", nickname);
 	        userInfo.put("email", email);
 	        userInfo.put("profile_image",profile_image);
 	        userInfo.put("thumbnail_image",thumbnail_image);
 	        
-	        
+	       // int i =userdao.checkUserId((String) userInfo.get("email"));
+			
+
 	    } catch (IOException e) {
 	        // TODO Auto-generated catch block
 	        e.printStackTrace();
@@ -135,7 +141,15 @@ public class KakaoAPIService{
 	    return userInfo;
 	}
 	
-	
+
+	public void addUser(String access_Token) {
+		HashMap<String,Object> userInfo = getUserInfo(access_Token);
+		
+		String email = (String)userInfo.get("email");
+		userdao.addUser((String) userInfo.get("email"));
+		
+		
+	}
 	
 	public void disconnectKakao(String access_Token) {
 		String reqURL = "https://kapi.kakao.com//v1/user/unlink";

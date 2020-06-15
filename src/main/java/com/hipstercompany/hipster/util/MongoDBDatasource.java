@@ -131,7 +131,7 @@ public class MongoDBDatasource {
 	// Mongodb delete
 	public static void mongodb_delete(DBCollection dbCollection) {
 		BasicDBObject deletequery =new BasicDBObject();
-		deletequery.put("mem_id","test01");
+		deletequery.put("mem_id","christian199@naver.com");
 		dbCollection.remove(deletequery); 
 	}
 

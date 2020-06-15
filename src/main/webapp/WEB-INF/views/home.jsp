@@ -13,7 +13,7 @@
 <title>Hipster</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="manifest" href="site.webmanifest">
+
 <link rel="shortcut icon" type="image/x-icon"
 	href="/hipster/resources/assets/img/neck.ico">
 
@@ -119,7 +119,7 @@
 											</div>
 											<div class="modal-body">
 												<div class="sns-login-btn-wrapper">
-													<a id="naverLoginBtn" class="sns-btn-naver">
+													<a id="naverLoginBtn" class="sns-btn-naver" href="https://kauth.kakao.com/oauth/authorize?client_id=2b2c7e111b27cbb5f391a0825ae806af&redirect_uri=http://localhost:8080/hipster/logout&response_type=code">
 														<img src="https://d2v80xjmx68n4w.cloudfront.net/assets/icon/naver_logo.png" alt="naver_icon" width=40 height=40>
 													</a>
 													
@@ -127,7 +127,7 @@
 														<img src="https://d2v80xjmx68n4w.cloudfront.net/assets/icon/kakao_logo.png" alt="kakao_icon" width=40 height=40>
 													</a>
 													
-													<a id="googleLoginBtn" class="sns-btn-google">
+													<a id="googleLoginBtn" class="sns-btn-google" href="https://kauth.kakao.com/oauth/authorize?client_id=2b2c7e111b27cbb5f391a0825ae806af&redirect_uri=http://localhost:8080/hipster/logout&response_type=code">
 														<img src="https://d2v80xjmx68n4w.cloudfront.net/assets/icon/google_logo.png" alt="google_icon" width=40 height=40>
 													</a>
 												</div>									
@@ -210,7 +210,7 @@
 			<div class="thumb-content-box">
 				<div class="thumb-content">
 					<h3>make an appointment now</h3>
-					<a href="#"> <i class="fas fa-long-arrow-alt-right"></i></a>
+					<a href="/hipster/resources/html/blog.html"> <i class="fas fa-long-arrow-alt-right"></i></a>
 				</div>
 			</div>
 		</div>
@@ -274,7 +274,7 @@
 							</div>
 							<div class="service-cap">
 								<h4>
-									<a href="#">Stylish Hair Cut</a>
+									<a href="/hipster/resources/html/blog.html">Stylish Hair Cut</a>
 								</h4>
 								<p>Sorem spsum dolor sit amsectetur adipisclit, seddo
 									eiusmod tempor incididunt ut laborea.</p>
@@ -288,7 +288,7 @@
 							</div>
 							<div class="service-cap">
 								<h4>
-									<a href="#">Body Massege</a>
+									<a href="/hipster/resources/html/blog.html">Body Massege</a>
 								</h4>
 								<p>Sorem spsum dolor sit amsectetur adipisclit, seddo
 									eiusmod tempor incididunt ut laborea.</p>
@@ -302,7 +302,7 @@
 							</div>
 							<div class="service-cap">
 								<h4>
-									<a href="#">Breard Style</a>
+									<a href="/hipster/resources/html/blog.html">Breard Style</a>
 								</h4>
 								<p>Sorem spsum dolor sit amsectetur adipisclit, seddo
 									eiusmod tempor incididunt ut laborea.</p>
@@ -336,7 +336,7 @@
 							<div class="team-caption">
 								<span>Master Barber</span>
 								<h3>
-									<a href="#">Guy C. Pulido bks</a>
+									<a href="/hipster/resources/html/blog.html">Guy C. Pulido bks</a>
 								</h3>
 							</div>
 						</div>
@@ -350,7 +350,7 @@
 							<div class="team-caption">
 								<span>Color Expart</span>
 								<h3>
-									<a href="#">Steve L. Nolan</a>
+									<a href="/hipster/resources/html/blog.html">Steve L. Nolan</a>
 								</h3>
 							</div>
 						</div>
@@ -364,7 +364,7 @@
 							<div class="team-caption">
 								<span>Master Barber</span>
 								<h3>
-									<a href="#">Edgar P. Mathis</a>
+									<a href="/hipster/resources/html/blog.html">Edgar P. Mathis</a>
 								</h3>
 							</div>
 						</div>
@@ -378,7 +378,7 @@
 							<div class="team-caption">
 								<span>Master Barber</span>
 								<h3>
-									<a href="#">Edgar P. Mathis</a>
+									<a href="/hipster/resources/html/blog.html">Edgar P. Mathis</a>
 								</h3>
 							</div>
 						</div>
@@ -589,10 +589,10 @@
 								<div class="blog-cap">
 									<p>| Physics</p>
 									<h3>
-										<a href="blog_details.html">Footprints in Time is perfect
+										<a href="/hipster/resources/html/blog.html">Footprints in Time is perfect
 											House in Kurashiki</a>
 									</h3>
-									<a href="blog_details.html" class="more-btn">became a
+									<a href="/hipster/resources/html/blog.html" class="more-btn">became a
 										member »</a>
 								</div>
 							</div>
@@ -613,10 +613,10 @@
 								<div class="blog-cap">
 									<p>| Physics</p>
 									<h3>
-										<a href="blog_details.html">Footprints in Time is perfect
+										<a href="/hipster/resources/html/blog.html">Footprints in Time is perfect
 											House in Kurashiki</a>
 									</h3>
-									<a href="blog_details.html" class="more-btn">became a
+									<a href="/hipster/resources/html/blog.html" class="more-btn">became a
 										member »</a>
 								</div>
 							</div>
@@ -638,7 +638,7 @@
 							<div class="single-footer-caption mb-50">
 								<!-- logo -->
 								<div class="footer-logo">
-									<a href="index.html"><img
+									<a href="/hipster/resources/html/blog.html"><img
 										src="/hipster/resources/assets/img/logo/logo2_footer.png"
 										alt=""></a>
 								</div>
@@ -661,11 +661,11 @@
 								<div class="footer-tittle">
 									<h4>Location</h4>
 									<ul>
-										<li><a href="#">Advanced</a></li>
-										<li><a href="#"> Management</a></li>
-										<li><a href="#">Corporate</a></li>
-										<li><a href="#">Customer</a></li>
-										<li><a href="#">Information</a></li>
+										<li><a href="/hipster/resources/html/blog.html">Advanced</a></li>
+										<li><a href="/hipster/resources/html/blog.html"> Management</a></li>
+										<li><a href="/hipster/resources/html/blog.html">Corporate</a></li>
+										<li><a href="/hipster/resources/html/blog.html">Customer</a></li>
+										<li><a href="/hipster/resources/html/blog.html">Information</a></li>
 									</ul>
 								</div>
 							</div>
@@ -675,11 +675,11 @@
 								<div class="footer-tittle">
 									<h4>Explore</h4>
 									<ul>
-										<li><a href="#">Cookies</a></li>
-										<li><a href="#">About</a></li>
-										<li><a href="#">Privacy Policy</a></li>
-										<li><a href="#">Proparties</a></li>
-										<li><a href="#">Licenses</a></li>
+										<li><a href="/hipster/resources/html/blog.html">Cookies</a></li>
+										<li><a href="/hipster/resources/html/blog.html">About</a></li>
+										<li><a href="/hipster/resources/html/blog.html">Privacy Policy</a></li>
+										<li><a href="/hipster/resources/html/blog.html">Proparties</a></li>
+										<li><a href="/hipster/resources/html/blog.html">Licenses</a></li>
 									</ul>
 								</div>
 							</div>
@@ -734,10 +734,10 @@
 						<div class="col-xl-3 col-lg-4">
 							<!-- Footer Social -->
 							<div class="footer-social f-right">
-								<a href="#"><i class="fab fa-twitter"></i></a> <a
+								<a href="/hipster/resources/html/blog.html"><i class="fab fa-twitter"></i></a> <a
 									href="https://www.facebook.com/sai4ull"><i
-									class="fab fa-facebook-f"></i></a> <a href="#"><i
-									class="fas fa-globe"></i></a> <a href="#"><i
+									class="fab fa-facebook-f"></i></a> <a href="/hipster/resources/html/blog.html"><i
+									class="fas fa-globe"></i></a> <a href="/hipster/resources/html/blog.html"><i
 									class="fab fa-instagram"></i></a>
 							</div>
 						</div>
@@ -749,7 +749,7 @@
 	</footer>
 	<!-- Scroll Up -->
 	<div id="back-top">
-		<a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+		<a title="Go to Top" href="/hipster/resources/html/blog.html"> <i class="fas fa-level-up-alt"></i></a>
 	</div>
 
 	<!-- JS here -->
@@ -758,7 +758,7 @@
 		src="/hipster/resources//assets/js/vendor/modernizr-3.5.0.min.js"></script>
 	<!-- Jquery, Popper, Bootstrap -->
 	<script src="/hipster/resources//assets/js/vendor/jquery-1.12.4.min.js"></script>
-	<script src="/hipster/resources//assets/js/popper.min.js"></script>
+	
 	<script src="/hipster/resources//assets/js/bootstrap.min.js"></script>
 	<!-- Jquery Mobile Menu -->
 	<script src="/hipster/resources//assets/js/jquery.slicknav.min.js"></script>
