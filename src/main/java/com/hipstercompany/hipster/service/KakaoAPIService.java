@@ -142,7 +142,7 @@ public class KakaoAPIService{
 	}
 	
 
-	public void addUser(String access_Token) {
+	public HashMap<String,Object> addUser(String access_Token) {
 		HashMap<String,Object> userInfo = getUserInfo(access_Token);
 		
 		String email = (String)userInfo.get("email");
@@ -150,12 +150,12 @@ public class KakaoAPIService{
 		int i =userdao.checkUserId((String) userInfo.get("email"));
 		
 		if(i>0) {
-			return;
+			return null;
 		}
 		
 		userdao.addUser((String) userInfo.get("email"));
 		
-		
+		return userInfo; 
 	}
 	
 	public void disconnectKakao(String access_Token) {

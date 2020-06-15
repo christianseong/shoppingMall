@@ -1,6 +1,7 @@
 package com.hipstercompany.hipster.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -30,6 +31,7 @@ public class HomeController {
 	@RequestMapping(value="/",method=RequestMethod.GET)
 		public String home(Locale locale, Model model) {
 			System.out.println("home");
+			
 			return "home";
 		}
 	
@@ -37,9 +39,13 @@ public class HomeController {
 	public String logincheck(@RequestParam("code")String code, Model model) throws IOException {
 		
 			String access_token = kakao.getAccessToken(code);
-			kakao.addUser(access_token);
+			HashMap<String,Object> userInfo =kakao.addUser(access_token);
+			
+			String email =(String)userInfo.get("email");
+			String array[] =new String[2];
+			array=email.split("@");
 		
-			model.addAttribute("id",access_token);
+			model.addAttribute("id",array[0]);
 			return "home";
 		
 	}
