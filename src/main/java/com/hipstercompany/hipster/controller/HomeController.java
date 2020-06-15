@@ -39,7 +39,8 @@ public class HomeController {
 			String access_token = kakao.getAccessToken(code);
 			kakao.addUser(access_token);
 		
-			 return "home";
+			model.addAttribute("id",access_token);
+			return "home";
 		
 	}
 	
