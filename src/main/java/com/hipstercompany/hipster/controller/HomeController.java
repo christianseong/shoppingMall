@@ -19,7 +19,6 @@ import com.hipstercompany.hipster.service.KakaoAPIService;
 
 @Controller
 @SessionAttributes("id")
-@RequestMapping
 public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	static String code ="";

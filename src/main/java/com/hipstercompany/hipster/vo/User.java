@@ -1,4 +1,4 @@
-package com.hipstercompany.hipster.member;
+package com.hipstercompany.hipster.vo;
 
 
 public class User {
