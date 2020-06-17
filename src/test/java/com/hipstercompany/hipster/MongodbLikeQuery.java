@@ -30,7 +30,7 @@ public class MongodbLikeQuery {
 		
 		
 		
-
+		//mysql 에서 like와 같음
 		String tagName = "여";
 
 		List<BasicDBObject> obj = new ArrayList<BasicDBObject>();
