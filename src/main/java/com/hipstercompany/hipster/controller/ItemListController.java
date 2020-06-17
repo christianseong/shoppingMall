@@ -26,8 +26,15 @@ public class ItemListController {
 		HashMap<String,Object> topmain = listservice.getTopMain();
 		
 		String[] pd_image_thumnail = (String[]) topmain.get("pd_image_thumnail");
+		String[] pd_name = (String[]) topmain.get("pd_name");
+		String[] pd_brand = (String[]) topmain.get("pd_brand");
+		
 		model.addAttribute("cursor_count",topmain.get("cursor_count"));
 		model.addAttribute("pd_image_thumnail",pd_image_thumnail);
+		model.addAttribute("pd_name",pd_name);
+		model.addAttribute("pd_brand",pd_brand);
+		
+		
 		System.out.println(pd_image_thumnail[0]);
 		return "itemList";
 	}

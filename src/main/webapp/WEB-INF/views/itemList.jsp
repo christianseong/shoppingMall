@@ -21,23 +21,23 @@
 	<%
 		int count =(int)request.getAttribute("cursor_count");
 		String pd_image_thumnail[] =(String [])request.getAttribute("pd_image_thumnail");
+		String pd_name[] =(String [])request.getAttribute("pd_name");
+		String pd_brand[] =(String [])request.getAttribute("pd_brand");
 	%>
 	
 	<% for(int i=0; i<count; i++){%>
-	<div class="card" style="width: 18rem;">
+	<div class="card" style="width: 10rem; hieght: 10rem;">
 		<img class="card-img-top" src=<%=pd_image_thumnail[i]%> alt="Card image cap">
 		<div class="card-body">
-			<h5 class="card-title">Card title </h5>
-			<p class="card-text">Some quick example text to build on the card
-				title and make up the bulk of the card's content.</p>
-			<a href="#" class="btn btn-primary">Go somewhere</a>
+			<h5 class="card-title"><%=pd_brand[i]%> </h5>
+			<p class="card-text"><%=pd_name[i]%></p>
 		</div>
 	</div>
 	<%}%>
 
 
 	
-	<h1><%=pd_image_thumnail[0]%> </h1>
+	
 
 
 	<script src="/hipster/resources/assets/detail/js/jquery.min.js"></script>

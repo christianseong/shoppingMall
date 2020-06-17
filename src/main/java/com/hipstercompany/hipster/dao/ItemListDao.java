@@ -83,8 +83,8 @@ public class ItemListDao {
 		map.put("cursor_count",cursor_count);
 		map.put("pd_price", pd_price);
 		map.put("pd_brand", pd_brand);
-		map.put("pd_name", pd_price);
-		map.put("pd_sex", pd_brand);
+		map.put("pd_name", pd_name);
+		map.put("pd_sex", pd_sex);
 		map.put("pd_image_thumnail", pd_image_thumnail);
 		return map;
 	}
