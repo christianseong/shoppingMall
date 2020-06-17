@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+
+.card{
+	float : left;
+	height: 20rem;
+}
+
+
+.card img{
+	height: 137.2px;
+	width: 160px;
+}
